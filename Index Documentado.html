@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #cf0e0e;
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            background-color: #3d0d0d;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        #display {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #a03434;
+            text-align: right;
+            font-size: 1.5em;
+            overflow-x: auto;
+        }
+        input[type="button"] {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #b92a2a;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        input[type="button"]:hover {
+            background-color: #ce4141;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        input[type="button"]:active {
+            background-color: #972525;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        
+        <input type="text" id="display" readonly>
+        <br>
+        <input type="button" value="7" onclick="addToDisplay('7')">
+        <input type="button" value="8" onclick="addToDisplay('8')">
+        <input type="button" value="9" onclick="addToDisplay('9')">
+        <input type="button" value="/" onclick="addToDisplay('/')">
+        <br>
+        <input type="button" value="4" onclick="addToDisplay('4')">
+        <input type="button" value="5" onclick="addToDisplay('5')">
+        <input type="button" value="6" onclick="addToDisplay('6')">
+        <input type="button" value="*" onclick="addToDisplay('*')">
+        <br>
+        <input type="button" value="1" onclick="addToDisplay('1')">
+        <input type="button" value="2" onclick="addToDisplay('2')">
+        <input type="button" value="3" onclick="addToDisplay('3')">
+        <input type="button" value="-" onclick="addToDisplay('-')">
+        <br>
+        <input type="button" value="0" onclick="addToDisplay('0')">
+        <input type="button" value="+" onclick="addToDisplay('+')">
+        <input type="button" value="." onclick="addToDisplay('.')">
+        <input type="button" value="=" onclick="calculate()">
+        <br>
+        <input type="button" value="C" onclick="clearDisplay()">
+    </div>
+    <script>
+        //en los input se declaramos las variables y con onclick le asignamos una funcion para poder trabajar con Javascript
+        //addToDisplay nos sirve para poder colocar los numeros en los input y calculate para poder hacer la operación y cleardisplay para borrar
+        function addToDisplay(value){
+            document.getElementById('display').value += value;
+        }
+        function calculate(){
+            var expresion = document.getElementById('display').value;
+             // La funcion eval toma la cadena expression y la ejecuta como si fuera javascript
+            var result= eval(expresion);
+            document.getElementById('display').value = result;
+        }
+        function clearDisplay(){
+            document.getElementById('display').value = '';
+        }
+    </script>
+    
+</body>
+</html>
